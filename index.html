@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+    <script src="scripts.js"></script>
+    <title>Search application</title>
+  </head>
+  <body>
+    <main>
+      <section class="search-section">
+        <div class="content-container">
+          <input
+            id="search-input"
+            oninput="fetchShowsByQueryString(this.value)"
+            placeholder="Begin searching for a TV-show..."
+          />
+          <ul id="show-list"></ul>
+        </div>
+      </section>
+
+      <section class="search-history-section">
+        <div class="content-container">
+          <div class="search-history-header-row">
+            <h2>Search history</h2>
+            <button class="tertiary-btn" onclick="clearSearchHistory()">
+              Clear search history
+            </button>
+          </div>
+          <ul id="search-history-list"></ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
