@@ -40,8 +40,11 @@ const clearSearchInput = () =>
   (document.getElementById("search-input").value = "");
 
 const updateSearchResult = (listElement, shows) => {
+  const handleMouseDown = event => event.preventDefault();
+
   const handleClick = async newHistoryItem => {
     addToSearchHistory(newHistoryItem);
+    // Awaiting the clearSearchInput() function to make sure the search-input value is empty
     await clearSearchInput();
     resetInnerHtml(listElement);
   };
@@ -56,6 +59,8 @@ const updateSearchResult = (listElement, shows) => {
     };
 
     li.innerText = show;
+    // Handling mousedown to stop the blur-event from the search-input
+    li.onmousedown = handleMouseDown;
     li.onclick = () => handleClick(newHistoryItem).then(setShowListVisibility);
     listElement.appendChild(li);
   });
