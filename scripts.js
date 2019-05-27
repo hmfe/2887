@@ -78,6 +78,9 @@ const fetchShowsByQueryString = queryString => {
   );
 };
 
+const handleBlur = () =>
+  (document.getElementById("show-list").style.display = "none");
+
 const setShowListVisibility = () => {
   const showList = document.getElementById("show-list");
   const input = document.getElementById("search-input");

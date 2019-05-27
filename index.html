@@ -20,6 +20,8 @@
           <input
             id="search-input"
             oninput="handleInputChange(this.value)"
+            onblur="handleBlur()"
+            onfocus="setShowListVisibility()"
             placeholder="Begin searching for a TV-show..."
           />
           <ul id="show-list"></ul>
