@@ -118,8 +118,7 @@ const updateSearchHistoryList = () => {
     date.innerText = historyItem.date;
 
     const deleteBtn = document.createElement("button");
-    deleteBtn.className = "search-history-item-delete";
-    deleteBtn.innerText = "Delete";
+    deleteBtn.className = "fas fa-times search-history-item-delete";
     deleteBtn.onclick = () => handleDelete(historyItem.id);
 
     dateAndDeleteContainer.appendChild(date);

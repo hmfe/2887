@@ -49,12 +49,10 @@ section {
 
 input {
   padding: 16px;
-  border: 1px solid #a0a0a0;
 }
 
 input:focus {
   outline: none;
-  border-color: #a0522d;
 }
 
 ul {
@@ -73,14 +71,38 @@ li {
   background-size: cover;
   padding: 64px 32px;
   height: 637px;
+  position: relative;
+  z-index: 2;
+}
+
+.search-section-content {
+  z-index: 2;
+}
+
+.search-section:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: -1;
 }
 
 .header {
   color: #fff;
+  text-align: center;
 }
 
 #search-input {
   width: 100%;
+  border: 3px solid transparent;
+  transition: 150ms all;
+}
+
+#search-input:focus {
+  border-color: #cd853f;
 }
 
 #show-list {
@@ -150,10 +172,12 @@ li {
 }
 
 .search-history-item-delete {
-  transition: 150ms color;
+  transition: 150ms all;
   cursor: pointer;
   border: 0;
+  color: #888;
   background-color: transparent;
+  font-size: 16px;
 }
 
 .search-history-item-delete:hover {
@@ -164,10 +188,10 @@ li {
   margin: 0 12px;
   font-size: 13px;
   white-space: nowrap;
+  color: #888;
 }
 
 .date-and-delete {
   display: flex;
   align-items: center;
-  color: #888;
 }
