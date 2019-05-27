@@ -40,9 +40,9 @@ const clearSearchInput = () =>
   (document.getElementById("search-input").value = "");
 
 const updateSearchResult = (listElement, shows) => {
-  const handleClick = newHistoryItem => {
+  const handleClick = async newHistoryItem => {
     addToSearchHistory(newHistoryItem);
-    clearSearchInput();
+    await clearSearchInput();
     resetInnerHtml(listElement);
   };
 
@@ -56,9 +56,14 @@ const updateSearchResult = (listElement, shows) => {
     };
 
     li.innerText = show;
-    li.onclick = () => handleClick(newHistoryItem);
+    li.onclick = () => handleClick(newHistoryItem).then(setShowListVisibility);
     listElement.appendChild(li);
   });
+};
+
+const handleInputChange = value => {
+  fetchShowsByQueryString(value);
+  setShowListVisibility();
 };
 
 const fetchShowsByQueryString = queryString => {
@@ -71,6 +76,12 @@ const fetchShowsByQueryString = queryString => {
   fetch(`http://api.tvmaze.com/search/shows?q=${queryString}`).then(res =>
     res.json().then(data => updateSearchResult(el, getShowsFromData(data)))
   );
+};
+
+const setShowListVisibility = () => {
+  const showList = document.getElementById("show-list");
+  const input = document.getElementById("search-input");
+  showList.style.display = input.value === "" ? "none" : "block";
 };
 
 const updateSearchHistoryList = () => {
@@ -87,7 +98,7 @@ const updateSearchHistoryList = () => {
   const generateListItem = historyItem => {
     const li = document.createElement("li");
 
-    const name = document.createElement("strong");
+    const name = document.createElement("b");
     name.className = "search-history-item-name";
     name.innerText = historyItem.show;
 

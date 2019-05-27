@@ -5,16 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
     <script src="scripts.js"></script>
     <title>Search application</title>
   </head>
   <body>
     <main>
       <section class="search-section">
-        <div class="content-container">
+        <h1 class="header">TV-show search</h1>
+        <div class="container-wrapper">
           <input
             id="search-input"
-            oninput="fetchShowsByQueryString(this.value)"
+            oninput="handleInputChange(this.value)"
             placeholder="Begin searching for a TV-show..."
           />
           <ul id="show-list"></ul>
