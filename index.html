@@ -22,12 +22,10 @@
     <main>
       <section class="search-section">
         <h1 class="header">TV-show search</h1>
+
         <div class="container-wrapper">
           <input
             id="search-input"
-            oninput="handleInputChange(this.value)"
-            onblur="handleBlur()"
-            onfocus="setShowListVisibility()"
             placeholder="Begin searching for a TV-show..."
           />
           <ul id="show-list"></ul>
@@ -38,7 +36,7 @@
         <div class="content-container">
           <div class="search-history-header-row">
             <h2>Search history</h2>
-            <button class="tertiary-btn" onclick="clearSearchHistory()">
+            <button id="clear-history-button" class="tertiary-btn">
               Clear search history
             </button>
           </div>
